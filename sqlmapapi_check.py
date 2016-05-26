@@ -9,7 +9,7 @@ import requests
 
 def usage():
 	print '+' + '-' * 50 + '+'
-	print '\t   Python sqlmapapi_test'
+	print '\t   Python sqlmapapi_test_tool'
 	print '\t\t Code BY:YIYANG'
 	print '+' + '-' * 50 + '+'
 	if len(sys.argv) != 2:
