@@ -9,7 +9,7 @@ import requests
 
 def usage():
 	print '+' + '-' * 50 + '+'
-	print '\t   Python sqlmapapi_test_tool'
+	print '\t   Python sqlmapapi_test'
 	print '\t\t Code BY:YIYANG'
 	print '+' + '-' * 50 + '+'
 	if len(sys.argv) != 2:
@@ -61,17 +61,26 @@ def task_delete(server,taskid):
 	url = server + '/scan/' + taskid + '/delete'
 	requests.get(url)
 
+def get_url(urls):
+	newurl = []
+	for url in urls:
+		if '?' in url:
+			newurl.append(url)
+	return newurl
 
 if __name__ == "__main__":
 	usage()
 	targets = [x.rstrip() for x in open(sys.argv[1])]
+	targets = get_url(targets)
 	server = 'http://127.0.0.1:8775'
 	headers = {'Content-Type':'application/json'}
+	i= 0
 
 	for target in targets:
 		try:
 			data = {"url":target,'smart':True}#你可以安需求增加修改sqlmap选项
 			start_time = time.time()
+			i = i + 1
 
 			(new,taskid) = task_new(server)
 			if new:
@@ -80,7 +89,7 @@ if __name__ == "__main__":
 				print "create failed"
 			start = task_start(server,taskid,data,headers)
 			if start:
-				print "scan started"
+				print "--------------->>> start scan target %s" % i
 			if not start:
 				print "scan can not be started"
 
@@ -92,9 +101,9 @@ if __name__ == "__main__":
 					print "scan terminated\n"
 					data = task_data(server,taskid)
 					if data:
-						print "%s is vuln" % target
+						print "+++++ %s is vuln\n" % target
 					if not data:
-						print "the target is not vuln"
+						print "+++++ the target is not vuln\n"
 					task_delete(server,taskid)
 					break
 				else:
