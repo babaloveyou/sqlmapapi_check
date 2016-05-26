@@ -1,4 +1,3 @@
-# -*- coding: gbk -*-
 # -*- coding: utf_8 -*-
 
 import os
@@ -10,11 +9,11 @@ import requests
 
 def usage():
 	print '+' + '-' * 50 + '+'
-	print '\t   Python Sqlmapapi批量测试工具'
-	print '\t\t Code BY： YIYANG'
+	print '\t   Python sqlmapapi_test'
+	print '\t\t Code BY:YIYANG'
 	print '+' + '-' * 50 + '+'
 	if len(sys.argv) != 2:
-		print "实例: sqlmapapi.py url.txt"
+		print "example: sqlmapapi.py url.txt"
 		sys.exit()
 
 def task_new(server):
