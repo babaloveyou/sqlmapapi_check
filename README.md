@@ -1,0 +1,2 @@
+# sqlmapapi_learn
+学习使用sqlmapapi来进行批量注入检测
