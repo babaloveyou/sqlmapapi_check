@@ -1,5 +1,5 @@
 # sqlmapapi_learn
-学习使用sqlmapapi来进行批量注入检测，将需要检测的链接或者爬虫爬取的链接保存为txt文档，然后利用此脚本进行自动批量检测。
+学习使用sqlmapapi来进行批量注入检测，将需要检测的链接保存为txt文档，然后利用此脚本进行自动批量SQL检测。
 
 此脚本通过sqlmapapi接口来调用sqlmap，使用方法：
 
